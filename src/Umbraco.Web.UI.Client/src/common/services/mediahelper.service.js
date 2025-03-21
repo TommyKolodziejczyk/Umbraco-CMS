@@ -310,10 +310,11 @@ function mediaHelper(umbRequestHelper, $http, $log) {
             }
 
             //get the proxy url for big thumbnails (this ensures one is always generated)
+            var relativeImagePath = imagePath.replace(Umbraco.Sys.ServerVariables.umbracoSettings.mediaPath, '');
             var thumbnailUrl = umbRequestHelper.getApiUrl(
                 "imagesApiBaseUrl",
                 "GetBigThumbnail",
-                [{ originalImagePath: imagePath }]) + '&rnd=' + Math.random();
+                [{ originalImagePath: relativeImagePath }]) + '&rnd=' + Math.random();
 
             return thumbnailUrl;
         },
